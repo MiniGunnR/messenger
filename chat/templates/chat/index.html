@@ -1,0 +1,29 @@
+{% load static from staticfiles %}
+
+<div id="threads">
+    {% for thread in threads %}
+        <p>
+            <a class="thread_list" data-thread-id="{{ thread.pk }}" href="{% if thread.user1 == request.user %}{% url 'chat:thread' thread.user2 %}{% else %}{% url 'chat:thread' thread.user1 %}{% endif %}">{{ thread }}</a>
+        </p>
+        {% endfor %}
+</div>
+
+<hr/>
+
+<div id="messages">
+    {% for message in messages %}
+        <p>{% if message.author == request.user %}Me{% else %}{{ message.author }}{% endif %} - {{ message.text }}</p>
+        <hr/>
+        {% endfor %}
+</div>
+
+
+<form method="POST" id="msg_form">
+    {% csrf_token %}
+
+    <textarea name="msg" id="msg"></textarea>
+    <input id="msg_send" type="submit" value="Send" />
+</form>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/chat.js' %}"></script>
