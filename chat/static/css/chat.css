@@ -1,0 +1,63 @@
+#threads {
+    background-color: lightcoral;
+
+    position: fixed;
+
+    height: 100%;
+    width: 25%;
+    min-width: 200px;
+
+    left: 0px;
+
+    overflow-y: scroll;
+}
+
+#thread {
+    background-color: lightgray;
+
+    position: fixed;
+
+    height: 100%;
+    width: 75%;
+
+    right: 0px;
+}
+
+#messages {
+    background-color: lightcyan;
+
+    position: fixed;
+    height: calc(100% - 100px);
+    width: 75%;
+}
+
+#message_form {
+    background-color: lightgoldenrodyellow;
+
+    position: fixed;
+
+    height: 100px;
+    width: 100%;
+
+    bottom: 0px;
+
+    padding: 10px;
+}
+
+#msg {
+    position: fixed;
+
+    height: 80px;
+    width: 65%;
+}
+
+#msg_send {
+    position: fixed;
+
+    width: calc(10% - 30px);
+    height: 34px;
+
+    margin-top: 23px;
+
+    right: 10px;
+}

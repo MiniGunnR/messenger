@@ -50,7 +50,6 @@ def thread(request, username):
 
 def send_message(request, username):
     if request.method == "POST":
-        print(request.POST)
         author = request.user
         receiver = User.objects.get(username=username)
         text = request.POST.get('msg')
