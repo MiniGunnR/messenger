@@ -28,7 +28,8 @@
 		<div id="threads">
 		    {% for thread in threads %}
 		        <p>
-		            <a class="thread_list" data-thread-id="{{ thread.pk }}" href="{% if thread.user1 == request.user %}{% url 'chat:thread' thread.user2 %}{% else %}{% url 'chat:thread' thread.user1 %}{% endif %}">{{ thread }}</a>
+{#		            <a class="thread_list" data-thread-id="{{ thread.pk }}" href="{% if thread.user1 == request.user %}{% url 'chat:thread' thread.user2 %}{% else %}{% url 'chat:thread' thread.user1 %}{% endif %}">{{ thread }}</a>#}
+		            <a class="thread_list" href="{% url 'chat:thread' thread.pk %}">{{ thread }}</a>
 		        </p>
 		        {% endfor %}
 		</div>

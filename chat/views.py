@@ -33,11 +33,12 @@ def index(request):
     return render(request, "chat/index.html", context)
 
 
-def thread(request, username):
+def thread(request, pk):
     querysets = [Thread.objects.filter(user1=request.user), Thread.objects.filter(user2=request.user)]
     threads = list(chain(*querysets))
 
-    thread = _get_or_create_thread(request.user, User.objects.get(username=username))
+    # thread = _get_or_create_thread(request.user, User.objects.get(username=username))
+    thread = Thread.objects.get(id=pk)
     messages = Message.objects.filter(thread=thread)
 
     context = {
@@ -48,13 +49,21 @@ def thread(request, username):
     return render(request, "chat/index.html", context)
 
 
-def send_message(request, username):
+def send_message(request, pk):
     if request.method == "POST":
+
         author = request.user
-        receiver = User.objects.get(username=username)
+
+        thread = Thread.objects.get(id=pk)
+
+        if thread.user1 == author:
+            receiver = thread.user2
+        else:
+            receiver = thread.user1
+
         text = request.POST.get('msg')
 
-        thread = _get_or_create_thread(author, receiver)
+        # thread = _get_or_create_thread(author, receiver)
 
         try:
             Message.objects.create(thread=thread, author=author, text=text, receiver=receiver)

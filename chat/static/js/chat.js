@@ -23,8 +23,8 @@ $(function() {
 
         var path = location.pathname;
         var arr = path.split('/');
-        var other_user = arr[arr.length - 2];
-        var url = '/' + other_user + '/send/'; // change this hardcoded URL when app is reusable
+        var thread_id = arr[arr.length - 2];
+        var url = '/' + thread_id + '/send/'; // change this hardcoded URL when app is reusable
         var msg = $('#msg');
 
         $.ajax({
